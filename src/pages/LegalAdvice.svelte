@@ -1,4 +1,6 @@
 <script>
+  import { each } from "svelte/internal";
+
   let options = [
     { opt: "Business/Company Registration and winding up", selected: false },
     { opt: "Buisness Tax/Taxation", selected: false },
@@ -7,150 +9,45 @@
     { opt: "Constituitional Law", selected: false },
     { opt: "Consumer Protection", selected: false },
     { opt: "Contracts and Legal Documentaion/Agreements", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
-    { opt: "", selected: false },
+    { opt: "Corporate Litigation", selected: false },
+    { opt: "Criminal Law", selected: false },
+    { opt: "Cyber Law", selected: false },
+    { opt: "Dispute Resolution (ADR)", selected: false },
+    { opt: "Employment and Labour Laws", selected: false },
+    { opt: "Environment Related Compliances", selected: false },
+    { opt: "Family Law", selected: false },
+    { opt: "Foreign Investment", selected: false },
+    { opt: "Franchising/Licensing", selected: false },
+    { opt: "General Advice", selected: false },
+    { opt: "Hookah Bar License", selected: false },
+    { opt: "Insolvency and Bankruptcy (IBC)", selected: false },
+    { opt: "Intellectual Property Law", selected: false },
+    { opt: "International Commercial and Contract Disputes", selected: false },
+    { opt: "Legal Notice", selected: false },
+    { opt: "Mergers and Acquisitions", selected: false },
+    { opt: "Motor Vehicle Act", selected: false },
+    { opt: "Prevention of Sexual Harassment (POSCO)", selected: false },
+    { opt: "Property Law", selected: false },
+    { opt: "Startup Funding and Finances", selected: false },
+    { opt: "Trade Law", selected: false },
+    { opt: "Website Agreement and Policy", selected: false },
+    // { opt: "", selected: false },
   ];
 </script>
 
 <h1 class="text-3xl py-6 ml-6">You are looking for a legal advice on ....</h1>
 <div class="flex gap-7 font-bold justify-center">
   <div class="">
-    <label class="label cursor-pointer">
-      <span class="label-text"
-        >Business/Company Registration and winding up</span
-      >
-      <input type="checkbox" checked class="checkbox" />
-    </label>
-    <label class="label cursor-pointer">
-      <span class="label-text">Buisness Tax/Taxation</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label>
-    <label class="label cursor-pointer">
-      <span class="label-text">Civil Law</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label>
-    <label class="label cursor-pointer">
-      <span class="label-text">Company Compliances/Filings</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label>
-    <label class="label cursor-pointer">
-      <span class="label-text">Constituitional Law</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label><label class="label cursor-pointer">
-      <span class="label-text">Consumer Protection</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label><label class="label cursor-pointer">
-      <span class="label-text">Contracts and Legal Documentaion/Agreements</span
-      >
-      <input type="checkbox" checked class="checkbox" />
-    </label><label class="label cursor-pointer">
-      <span class="label-text">Corporate Litigation</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label><label class="label cursor-pointer">
-      <span class="label-text">Criminal Law</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label><label class="label cursor-pointer">
-      <span class="label-text">Cyber Law</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label>
-    <label class="label cursor-pointer">
-      <span class="label-text">Dispute Resolution (ADR)</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label>
-    <label class="label cursor-pointer">
-      <span class="label-text">Employment and Labour Laws</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label>
-    <label class="label cursor-pointer">
-      <span class="label-text">Environment Related Compliances</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label>
-    <label class="label cursor-pointer">
-      <span class="label-text">Family Law</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label>
-    <label class="label cursor-pointer">
-      <span class="label-text">Foreign Investment</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label>
-  </div>
-  <div class="">
-    <label class="label cursor-pointer">
-      <span class="label-text">Franchising/Licensing</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label>
-    <label class="label cursor-pointer">
-      <span class="label-text">General Advice</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label><label class="label cursor-pointer">
-      <span class="label-text">Hookah Bar License</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label><label class="label cursor-pointer">
-      <span class="label-text">Insolvency and Bankruptcy (IBC)</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label><label class="label cursor-pointer">
-      <span class="label-text">Intellectual Property Law</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label>
-    <label class="label cursor-pointer">
-      <span class="label-text"
-        >International Commercial and Contract Disputes</span
-      >
-      <input type="checkbox" checked class="checkbox" />
-    </label>
-    <label class="label cursor-pointer">
-      <span class="label-text">Legal Notice</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label>
-    <label class="label cursor-pointer">
-      <span class="label-text">Mergers and Acquisitions</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label>
-    <label class="label cursor-pointer">
-      <span class="label-text">Motor Vehicle Act</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label>
-    <label class="label cursor-pointer">
-      <span class="label-text">Prevention of Sexual Harassment (POSCO)</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label><label class="label cursor-pointer">
-      <span class="label-text">Property Law</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label><label class="label cursor-pointer">
-      <span class="label-text">Startup Funding and Finances</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label><label class="label cursor-pointer">
-      <span class="label-text">Trade Law</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label><label class="label cursor-pointer">
-      <span class="label-text">Website Agreement and Policy</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label>
-    <!-- <label class="label cursor-pointer">
-      <span class="label-text">Other</span>
-      <input type="checkbox" checked class="checkbox" />
-    </label> -->
+    {#each options as option}
+      <label class="label cursor-pointer">
+        <span class="label-text">{option.opt}</span>
+        <input
+          type="checkbox"
+          bind:checked={option.selected}
+          class="checkbox"
+        />
+      </label>
+    {/each}
     <input
       type="text"
       placeholder="Other (type problem statement here)"
