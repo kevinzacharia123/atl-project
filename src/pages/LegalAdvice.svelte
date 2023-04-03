@@ -33,30 +33,30 @@
     { opt: "Website Agreement and Policy", selected: false },
     // { opt: "", selected: false },
   ];
+  // $: console.log(options);
 </script>
 
-<h1 class="text-3xl py-6 ml-6">You are looking for a legal advice on ....</h1>
-<div class="flex gap-7 font-bold justify-center">
-  <div class="">
-    {#each options as option}
-      <label class="label cursor-pointer">
-        <span class="label-text">{option.opt}</span>
-        <input
-          type="checkbox"
-          bind:checked={option.selected}
-          class="checkbox"
-        />
-      </label>
-    {/each}
+<h1 class="text-3xl py-3">You are looking for a legal advice on ....</h1>
+
+<div class=" flex flex-row flex-wrap gap-2">
+  {#each options as option}
+    <label
+      class="label cursor-pointer font-bold rounded border-2 border-neutral-content {option.selected
+        ? 'bg-neutral-content text-base-100'
+        : ''}"
+    >
+      {option.opt}
+      <input type="checkbox" bind:checked={option.selected} class="hidden" />
+    </label>
+  {/each}
+  <div class="flex flex-row w-full gap-2">
     <input
       type="text"
       placeholder="Other (type problem statement here)"
-      class="input input-bordered w-full m-3"
+      class="input input-bordered flex-grow max-w-3xl"
     />
+    <button class="btn btn-primary">search</button>
   </div>
-</div>
-<div class="flex w-full justify-end">
-  <button class="btn btn-primary self-end m-3 mr-32">search</button>
 </div>
 
 <style>

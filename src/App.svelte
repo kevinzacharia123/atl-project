@@ -5,7 +5,13 @@
   import { page } from "./global";
 </script>
 
-<div>
+<!-- <div class="flex flex-col min-h-screen">
+  <Navbar />
+  <div class="flex-grow">
+    <svelte:component this={$page} />
+  </div>
+</div> -->
+<div class="">
   <Navbar />
   <svelte:component this={$page} />
 </div>
