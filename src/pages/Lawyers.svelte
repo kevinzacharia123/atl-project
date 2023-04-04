@@ -1,4 +1,6 @@
 <script>
+  import data from "../data.json";
+  import states from "../states.json";
   let practiceArea = [
     { opt: "Business/Company Registration and winding up", selected: false },
     { opt: "Buisness Tax/Taxation", selected: false },
@@ -31,59 +33,32 @@
     { opt: "Website Agreement and Policy", selected: false },
     // { opt: "", selected: false },
   ];
+  let courts = [
+    { court: "Lower Court" },
+    { court: "High Court" },
+    { court: "Supreme Court" },
+    { court: "Subordinate Court" },
+  ];
+  let minExperience = 0;
+  let maxFees = 0;
 </script>
 
 <h1 class="text-4xl font-bold">Lawyers</h1>
+
 <div class="flex flex-row flex-wrap gap-4">
-  <div class="dropdown">
-    <label class="btn" tabindex="0">State</label>
-    <ul
-      tabindex="0"
-      class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-    >
-      <li>Andhra Pradesh</li>
-      <li>Arunachal Pradesh</li>
-      <li>Assam</li>
-      <li>Bihar</li>
-      <li>Chhattisgarh</li>
-      <li>Goa</li>
-      <li>Gujarat</li>
-      <li>Haryana</li>
-      <li>Himachal Pradesh</li>
-      <li>Jammu and Kashmir</li>
-      <li>Jharkhand</li>
-      <li>Karnataka</li>
-      <li>Kerala</li>
-      <li>Madhya Pradesh</li>
-      <li>Maharashtra</li>
-      <li>Manipur</li>
-      <li>Meghalaya</li>
-      <li>Mizoram</li>
-      <li>Nagaland</li>
-      <li>Odisha</li>
-      <li>Punjab</li>
-      <li>Rajasthan</li>
-      <li>Sikkim</li>
-      <li>Tamil Nadu</li>
-      <li>Telangana</li>
-      <li>Tripura</li>
-      <li>Uttar Pradesh</li>
-      <li>Uttarakhand</li>
-      <li>West Bengal</li>
-    </ul>
-  </div>
-  <div class="dropdown">
-    <label class="btn" tabindex="0">Courts</label>
-    <ul
-      tabindex="0"
-      class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-    >
-      <li><a>Lower Court</a></li>
-      <li><a>High Court</a></li>
-      <li><a>Supreme Court</a></li>
-      <li><a>Family Court</a></li>
-    </ul>
-  </div>
+  <select class="select select-bordered w-full max-w-xs">
+    <option disabled selected>Courts</option>
+    {#each courts as court}
+      <option>{court.court}</option>
+    {/each}
+  </select>
+  <select class="select select-bordered w-full max-w-xs">
+    <option disabled selected>State</option>
+    {#each states as state}
+      <option>{state}</option>
+    {/each}
+  </select>
+
   <select class="select select-bordered w-full max-w-xs">
     <option disabled selected>Practice Area</option>
     {#each practiceArea as area}
@@ -91,7 +66,63 @@
     {/each}
   </select>
   <div class="flex flex-col gap-2">
-    <div class="badge">Experience</div>
-    <input type="range" min="0" max="100" value="40" class="range w-72" />
+    <div class="badge">minimum experience: {minExperience}</div>
+    <input
+      type="range"
+      min="0"
+      max="70"
+      bind:value={minExperience}
+      class="range w-72"
+    />
   </div>
+  <div class="flex flex-col gap-2">
+    <div class="badge">maximum fees: {maxFees}</div>
+    <input
+      type="range"
+      min="5000"
+      max="500000"
+      step="1000"
+      bind:value={maxFees}
+      class="range w-72"
+    />
+  </div>
+</div>
+<!-- <div class="">
+  {#each data.slice(0, 10) as lawyer}
+    <div>
+      <p>name: {lawyer.name}</p>
+      <p>position: {lawyer.position}</p>
+      <p>contact: {lawyer.contact[0]}</p>
+      {#if lawyer.contact[1]}
+        <p>email: {lawyer.contact[1]}</p>
+      {/if}
+    </div>
+    <br />
+    <br />
+  {/each}
+</div> -->
+<div class="flex flex-row flex-wrap gap-3 mt-4 justify-center">
+  {#each data.slice(0, 40) as lawyer}
+    <div class="card w-96 bg-base-200 shadow-xl">
+      <figure>
+        <img
+          src={lawyer.img}
+          alt="Lawyer"
+          on:error={function () {
+            this.src =
+              "https://cdn-icons-png.flaticon.com/512/3177/3177440.png";
+          }}
+        />
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">{lawyer.name}</h2>
+        <p class="m-0 p-0">
+          {lawyer.position}<br />{lawyer.contact[0]}<br
+          />{#if lawyer.contact[1]}{lawyer.contact[1]}{/if}
+        </p>
+        <p class="m-0 p-0">{lawyer.contact[0]}</p>
+        {#if lawyer.contact[1]}<p class="m-0 p-0">{lawyer.contact[1]}</p>{/if}
+      </div>
+    </div>
+  {/each}
 </div>
