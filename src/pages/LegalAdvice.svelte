@@ -38,15 +38,15 @@
 
 <h1 class="text-3xl py-3">You are looking for a legal advice on ....</h1>
 
-<div class=" flex flex-row flex-wrap gap-2">
+<div class="flex flex-row flex-wrap justify-center [&>*]:w-[420px] gap-2 my-4">
   {#each options as option}
     <label
-      class="label cursor-pointer font-bold rounded border-2 border-neutral-content {option.selected
-        ? 'bg-neutral-content text-base-100'
+      class="label cursor-pointer font-bold rounded border border-neutral-content {option.selected
+        ? 'bg-base-content text-base-100'
         : ''}"
     >
       {option.opt}
-      <input type="checkbox" bind:checked={option.selected} class="hidden" />
+      <input type="checkbox" bind:checked={option.selected} class="checkbox" />
     </label>
   {/each}
   <div class="flex flex-row w-full gap-2">
@@ -66,5 +66,9 @@
   }
   a {
     font-size: 1.25rem;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 186px);
   }
 </style>
